@@ -10,6 +10,7 @@ namespace ImplementinganAPIinASPNETWebAPI.Data
 {
     public class CountingKsContext:DbContext
     {
+
         public CountingKsContext()
             : base("CountingKsContext")
         {

@@ -17,7 +17,8 @@ namespace ImplementinganAPIinASPNETWebAPI.Data
 
         protected override void Seed(CountingKsContext context)
         {
-            base.Seed(context);
+            //base.Seed(context);
+            new CountingKsSeeder(context).Seed();
         }
     }
 }

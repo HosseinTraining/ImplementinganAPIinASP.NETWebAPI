@@ -51,6 +51,7 @@
     <Compile Include="CountingKsContext.cs" />
     <Compile Include="CountingKsMapping.cs" />
     <Compile Include="CountingKsMigrationConfiguration.cs" />
+    <Compile Include="CountingKsRepository.cs" />
     <Compile Include="CountingKsSeeder.cs" />
     <Compile Include="Entities\ApiUser.cs" />
     <Compile Include="Entities\AuthToken.cs" />
