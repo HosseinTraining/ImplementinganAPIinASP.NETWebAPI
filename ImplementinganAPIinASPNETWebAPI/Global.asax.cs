@@ -13,6 +13,8 @@ namespace ImplementinganAPIinASPNETWebAPI
     {
         protected void Application_Start()
         {
+            AutoFacConfiguration.AutoFacBootstraper();
+
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

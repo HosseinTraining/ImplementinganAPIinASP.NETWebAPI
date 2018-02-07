@@ -11,8 +11,7 @@ namespace ImplementinganAPIinASPNETWebAPI.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
-
-            return View();
+            return RedirectPermanent("http://localhost:57826/api/foods");
         }
     }
 }
