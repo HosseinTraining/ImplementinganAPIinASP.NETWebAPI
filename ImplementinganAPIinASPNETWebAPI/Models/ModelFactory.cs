@@ -12,6 +12,7 @@ namespace ImplementinganAPIinASPNETWebAPI.Models
         {
             return new FoodModel
             {
+                Id = food.Id,
                 Description = food.Description,
                 MeasureModels = food.Measures.Select(Create)
             };
@@ -21,6 +22,7 @@ namespace ImplementinganAPIinASPNETWebAPI.Models
         {
             return new MeasureModel
             {
+                Id = measure.Id,
                 Description = measure.Description,
                 Calories = measure.Calories
             };

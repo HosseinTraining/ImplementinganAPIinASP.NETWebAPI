@@ -36,9 +36,9 @@ namespace ImplementinganAPIinASPNETWebAPI.Controllers
             return resualt;
         }
 
-        public FoodModel Get(int foodId)
+        public FoodModel Get(int id)
         {
-            return _modelFactory.Create(_countingKsRepository.GetFood(foodId));
+            return _modelFactory.Create(_countingKsRepository.GetFood(id));
         }
     }
 }

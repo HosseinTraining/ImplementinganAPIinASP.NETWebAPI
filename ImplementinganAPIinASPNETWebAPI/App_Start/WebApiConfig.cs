@@ -18,9 +18,34 @@ namespace ImplementinganAPIinASPNETWebAPI
 
             config.Routes.MapHttpRoute(
                 name: "Food",
-                routeTemplate: "api/{controller}/{foodId}",
-                defaults: new { controller = "Foods", foodId = RouteParameter.Optional }
+                routeTemplate: "api/nutrition/foods/{id}",
+                defaults: new { controller = "Foods", id = RouteParameter.Optional }
+                //constraints: new {id = "/d+"}
             );
+            config.Routes.MapHttpRoute(
+                name: "Measures",
+                routeTemplate: "api/nutrition/foods/{foodId}/Measures/{id}",
+                defaults: new { controller = "measures", id = RouteParameter.Optional }
+                );
+
+            config.Routes.MapHttpRoute(
+                name: "Diaries",
+                routeTemplate: "api/user/diaries/{diaryid}",
+                defaults: new { controller = "diaries", diaryid = RouteParameter.Optional }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "DiaryEntries",
+                routeTemplate: "api/user/diaries/{diaryid}/entries/{id}",
+                defaults: new { controller = "diaryentries", id = RouteParameter.Optional }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "DiarySummary",
+                routeTemplate: "api/user/diaries/{diaryid}/summary",
+                defaults: new { controller = "diarysummary" }
+            );
+
             //config.Routes.MapHttpRoute(
             //    name: "DefaultApi",
             //    routeTemplate: "api/{controller}/{id}",
