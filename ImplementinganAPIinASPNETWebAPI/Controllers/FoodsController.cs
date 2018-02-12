@@ -10,27 +10,23 @@ using ImplementinganAPIinASPNETWebAPI.Models;
 
 namespace ImplementinganAPIinASPNETWebAPI.Controllers
 {
-    public class FoodsController : ApiController
+    public abstract class FoodsController : BaseController
     {
-        private readonly ICountingKsRepository _countingKsRepository;
-        private readonly ModelFactory _modelFactory;
-
         public FoodsController(ICountingKsRepository countingKsRepository)
+            : base(countingKsRepository)
         {
-            _countingKsRepository = countingKsRepository;
-            _modelFactory = new ModelFactory();
 
         }
 
         public IEnumerable<FoodModel> Get(bool includeMeasures = true)
         {
 
-            var foodsQuery = includeMeasures ? _countingKsRepository.GetAllFoodsWithMeasures() : _countingKsRepository.GetAllFoods();
+            var foodsQuery = includeMeasures ? BaseCountingRepository.GetAllFoodsWithMeasures() : BaseCountingRepository.GetAllFoods();
             var resualt = foodsQuery
                 .OrderBy(d => d.Description)
                 .Take(25)
                 .ToList()
-                .Select(x => _modelFactory.Create(x));
+                .Select(x => BaseModelFactory.Create(x));
 
 
             return resualt;
@@ -38,7 +34,7 @@ namespace ImplementinganAPIinASPNETWebAPI.Controllers
 
         public FoodModel Get(int id)
         {
-            return _modelFactory.Create(_countingKsRepository.GetFood(id));
+            return BaseModelFactory.Create(BaseCountingRepository.GetFood(id));
         }
     }
 }
