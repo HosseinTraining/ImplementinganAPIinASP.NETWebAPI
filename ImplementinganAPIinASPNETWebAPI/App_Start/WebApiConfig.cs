@@ -17,11 +17,13 @@ namespace ImplementinganAPIinASPNETWebAPI
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
-                name: "Food",
+                name: "Foods",
                 routeTemplate: "api/nutrition/foods/{id}",
                 defaults: new { controller = "Foods", id = RouteParameter.Optional }
                 //constraints: new {id = "/d+"}
             );
+
+
             config.Routes.MapHttpRoute(
                 name: "Measures",
                 routeTemplate: "api/nutrition/foods/{foodId}/Measures/{id}",
@@ -30,7 +32,7 @@ namespace ImplementinganAPIinASPNETWebAPI
 
             config.Routes.MapHttpRoute(
                 name: "Diaries",
-                routeTemplate: "api/user/diaries/{diaryid}",
+                routeTemplate: "api/user/diaries/{diaryId}",
                 defaults: new { controller = "diaries", diaryid = RouteParameter.Optional }
             );
 

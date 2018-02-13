@@ -10,7 +10,7 @@ using ImplementinganAPIinASPNETWebAPI.Models;
 
 namespace ImplementinganAPIinASPNETWebAPI.Controllers
 {
-    public abstract class FoodsController : BaseController
+    public  class FoodsController : BaseController
     {
         public FoodsController(ICountingKsRepository countingKsRepository)
             : base(countingKsRepository)

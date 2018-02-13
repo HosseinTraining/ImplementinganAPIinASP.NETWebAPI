@@ -3,6 +3,7 @@ using System.Web.Http;
 using Autofac;
 using Autofac.Integration.WebApi;
 using ImplementinganAPIinASPNETWebAPI.Data;
+using ImplementinganAPIinASPNETWebAPI.Services;
 
 namespace ImplementinganAPIinASPNETWebAPI
 {
@@ -22,6 +23,7 @@ namespace ImplementinganAPIinASPNETWebAPI
         private static void AutoFacRegisterType(ContainerBuilder builder)
         {
             builder.Register(m => new CountingKsRepository(new CountingKsContext())).As<ICountingKsRepository>();
+            builder.RegisterType<CountingKsIdentityService>().As<ICountingKsIdentityService>();
         }
     }
 }

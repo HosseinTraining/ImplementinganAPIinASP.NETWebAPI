@@ -9,28 +9,27 @@ using ImplementinganAPIinASPNETWebAPI.Models;
 
 namespace ImplementinganAPIinASPNETWebAPI.Controllers
 {
-    public class MeasuresController : ApiController
+    public class MeasuresController : BaseController
     {
-        private ICountingKsRepository _repository;
-        private ModelFactory _modelFactory;
+
 
         public MeasuresController(ICountingKsRepository countingKsRepository)
+        : base(countingKsRepository)
         {
-            _repository = countingKsRepository;
-            _modelFactory = new ModelFactory();
+
         }
 
         public IEnumerable<MeasureModel> Get(int foodId)
         {
-            return _repository.GetMeasuresForFood(foodId)
+            return BaseCountingRepository.GetMeasuresForFood(foodId)
                  .ToList()
-                 .Select(m => _modelFactory.Create(m));
+                 .Select(m => BaseModelFactory.Create(m));
         }
 
         public MeasureModel Get(int foodId, int id)
         {
-            var resualt = _repository.GetMeasure(id);
-            return (resualt?.Food.Id == foodId) ? _modelFactory.Create(resualt) : null;
+            var resualt = BaseCountingRepository.GetMeasure(id);
+            return (resualt?.Food.Id == foodId) ? BaseModelFactory.Create(resualt) : null;
         }
     }
 }

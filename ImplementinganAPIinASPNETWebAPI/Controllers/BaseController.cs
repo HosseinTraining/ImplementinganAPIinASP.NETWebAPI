@@ -9,7 +9,7 @@ using System.Web.Http;
 
 namespace ImplementinganAPIinASPNETWebAPI.Controllers
 {
-    public class BaseController : ApiController
+    public abstract class BaseController : ApiController
     {
         ICountingKsRepository _repo;
         ModelFactory _modelFactory;
@@ -20,22 +20,8 @@ namespace ImplementinganAPIinASPNETWebAPI.Controllers
             _repo = repo;
         }
 
-        protected ICountingKsRepository BaseCountingRepository
-        {
-            get
-            {
-                return _repo;
-            }
-        }
+        protected ICountingKsRepository BaseCountingRepository => _repo;
 
-        protected ModelFactory BaseModelFactory
-        {
-            get
-            {
-                if (_modelFactory == null)
-                    _modelFactory = new ModelFactory(this.Request);
-                return _modelFactory;
-            }
-        }
+        protected ModelFactory BaseModelFactory => _modelFactory ?? (_modelFactory = new ModelFactory(this.Request));
     }
 }
